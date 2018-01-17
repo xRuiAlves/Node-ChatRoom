@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,18 +11,29 @@
 </head>
 
 <body>
-    <!-- Usar chat form -->
-    <form id="messageForm">
-        <label>Send your message bellow: </label>
-        <br />
-        <textarea rows ="4" cols=50 id="message"></textarea>
-        <br />
-        <input type="submit" value="Send" />
-    </form>
-    <br /> <br />
+    <!-- User 'Log-In' area -->
+    <div id = "loginArea">
+        <form id="loginForm">
+            <label>Enter your nickname: </label>
+            <input id="nickname" />
+            <input type="submit" value="Join"  />
+        </form>
+    </div>
 
-    <!-- Chat -->
-    <div id="chat"></div>
+    <!-- User Message Area -->
+    <div id = "chatroomArea">
+        <form id="messageForm">
+            <label>Send your message bellow: </label>
+            <br />
+            <textarea style="resize: none;" rows ="2" cols=40 id="message"></textarea>
+            <br />
+            <input type="submit" value="Send" />
+        </form>
+        <br /> <br />
+
+        <!-- Chat -->
+        <div id="chat"></div>
+    </div>
 
 
     <script>
@@ -30,18 +41,41 @@
             // Connection
             var socket = io.connect();
 
+            // Login 'screen' variables
+            var $loginArea = $('#loginArea');
+            var $loginForm = $('#loginForm');
+            var $nickname = $('#nickname');
+
             // Chatroom variables
+            var $chatroomArea = $('#chatroomArea');
             var $messageForm = $('#messageForm');
             var $message = $('#message');
             var $chat = $('#chat');
 
-            // Send the message to Server on 'Send' button clicl
+            $chatroomArea.hide();   // Chatroom is not visible before choosing a nickname
+
+            // Send the user's nickname to the server
+            $loginForm.submit(function(e){
+                // Prevent page from refreshing
+                e.preventDefault();
+
+                if ($nickname.val() != ''){
+                    // Associate the nickname to the socket
+                    socket.nickname = $nickname.val();
+
+                    // Hide the login area and display the chatroom itself
+                    $loginArea.hide();
+                    $chatroomArea.show();
+                }
+            });
+
+            // Send the message to Server on 'Send' button click
             $messageForm.submit(function(e){
                 // Prevent page from refreshing
                 e.preventDefault();
 
                 // Send message to the server
-                socket.emit('send message' , $message.val());
+                socket.emit('send message' , {content:$message.val() , nickname:socket.nickname});
 
                 // Clear the text textarea
                 $message.val('');

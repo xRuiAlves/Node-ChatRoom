@@ -29,9 +29,6 @@ function application(request , response){
 }
 
 function clientConnected(socket){
-    // Client connection
-    console.log('Client connected.');
-
     // Client disconnected
     socket.on('disconnect' , clientDisconnected);
 
@@ -40,9 +37,9 @@ function clientConnected(socket){
 }
 
 function clientDisconnected(){
-    console.log("Client disconnected...");
+    // Nothing for now
 }
 
-function sendMessage(messageData){
-    io.sockets.emit('new message' , messageData);
+function sendMessage(message){
+    io.sockets.emit('new message' , '<b>' + message.nickname + '</b>: ' + message.content);
 }
