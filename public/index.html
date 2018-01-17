@@ -5,6 +5,9 @@
     <!-- Page's Title -->
     <title>Chat-Room 1.0</title>
 
+    <!-- Page styling -->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+
     <!-- Socket.IO client script -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -14,9 +17,10 @@
     <!-- User 'Log-In' area -->
     <div id = "loginArea">
         <form id="loginForm">
-            <label>Enter your nickname: </label>
-            <input id="nickname" />
-            <input type="submit" value="Join"  />
+            <label><b>Enter your nickname bellow to join the chat-room: </b></label>
+            <br /><br />
+            <input class="inputArea1" id="nickname" />
+            <input type="submit" class="button" value="Join"  />
         </form>
     </div>
 
@@ -25,12 +29,12 @@
         <!-- List of currently connect users -->
         <p id = "connectedUsers" ><b>Connected Users:</b></p>
 
-        <form id="messageForm">
+        <form class="customForm" id="messageForm">
             <label>Send your message bellow: </label>
             <br />
-            <textarea style="resize: none;" rows ="2" cols=40 id="message"></textarea>
+            <textarea class="inputArea2" rows ="4" cols="50" id="message"></textarea>
             <br />
-            <input type="submit" value="Send" />
+            <input type="submit" class="button" value="Send" />
         </form>
         <br /> <br />
 
@@ -70,6 +74,9 @@
                     // Hide the login area and display the chatroom itself
                     $loginArea.hide();
                     $chatroomArea.show();
+
+                    // Notify the server that the new user chose a nickname
+                    socket.emit('new client nickname' , socket.nickname);
                 }
             });
 
@@ -87,14 +94,17 @@
 
             // When receiving a message from the server, append it to the chat div
             socket.on('new message' , function(data){
-                $chat.append('<p>' + data + '</p>');
+                $chat.append('<p class="chatMessage" >' + data + '</p>');
             });
 
             // Update current users
             socket.on('update current users' , function(nicknames){
                 var nicknamesList = '<b>Connected Users:</b>';
                 for (i=0 ; i<nicknames.length ; i++){
-                    nicknamesList += '   ' + nicknames[i];
+                    if( i != 0 ){
+                        nicknamesList += "&nbsp&nbsp&nbsp,"
+                    }
+                    nicknamesList += "&nbsp&nbsp&nbsp" + nicknames[i];
                 }
                 $connectedUsers.html(nicknamesList);
             });

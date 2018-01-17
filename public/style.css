@@ -1,0 +1,52 @@
+* {
+    font-family: arial;
+}
+
+.button {
+    padding: 6px 20px;
+    font-size: 14px;
+    color: black;
+    background-color: #a6a6a6;
+    border: 2px solid #333333;
+    border-radius: 3px;
+}
+
+.button:hover {
+    background-color: #d9d9d9;
+    border: 2px solid #8c8c8c;
+}
+
+.inputArea1 {
+    padding: 5px 10px;
+    border: 2px solid #333333;
+    background-color: #d9d9d9;
+    font-size: 16px;
+}
+
+.inputArea2 {
+    border-radius: 3px;
+    border: 2px solid #333333;
+    background-color: #d9d9d9;
+    resize: none;
+    font-size: 16px;
+}
+
+.chatMessage {
+    font-size: 16px;
+    padding: 10px 15px;
+    border: 2px solid #333333;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+}
+
+p {
+    font-size: 16px;
+}
+
+label {
+    font-size: 16px;
+}
+
+body {
+    background-color: white;
+}
