@@ -22,6 +22,9 @@
 
     <!-- User Message Area -->
     <div id = "chatroomArea">
+        <!-- List of currently connect users -->
+        <p id = "connectedUsers" ><b>Connected Users:</b></p>
+
         <form id="messageForm">
             <label>Send your message bellow: </label>
             <br />
@@ -51,6 +54,7 @@
             var $messageForm = $('#messageForm');
             var $message = $('#message');
             var $chat = $('#chat');
+            var $connectedUsers = $('#connectedUsers');
 
             $chatroomArea.hide();   // Chatroom is not visible before choosing a nickname
 
@@ -84,6 +88,15 @@
             // When receiving a message from the server, append it to the chat div
             socket.on('new message' , function(data){
                 $chat.append('<p>' + data + '</p>');
+            });
+
+            // Update current users
+            socket.on('update current users' , function(nicknames){
+                var nicknamesList = '<b>Connected Users:</b>';
+                for (i=0 ; i<nicknames.length ; i++){
+                    nicknamesList += '   ' + nicknames[i];
+                }
+                $connectedUsers.html(nicknamesList);
             });
         });
     </script>
