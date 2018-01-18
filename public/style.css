@@ -95,7 +95,7 @@
 
 #chat {
     padding-left: 20px;
-    height: 610px;
+    height: 50vh;
     overflow-y: scroll;
     border-radius: 5px;
     border: 2px solid #80b3ff;

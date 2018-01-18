@@ -109,8 +109,16 @@
             });
 
             // When receiving a message from the server, append it to the chat div
-            socket.on('new message' , function(data){
-                $chat.append('<p class="chatMessage" >' + data + '</p>');
+            socket.on('new message' , function(usermessage){
+                var $msg = $('<p class="chatMessage">');
+                var $msgNickname = $('<b>');
+                var $msgContent = $('<text>');
+                $msgNickname.append(usermessage.nickname + ':  ');
+                $msgContent.text(usermessage.content);
+                $msg.append($msgNickname);
+                $msg.append($msgContent);
+
+                $chat.append($msg);
 
                 // Auto scroll to the bottom of the div
                 $("#chat").prop({ scrollTop: $("#chat").prop("scrollHeight") });

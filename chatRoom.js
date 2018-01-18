@@ -66,7 +66,7 @@ function clientConnected(socket){
 
 function sendMessage(message){
     // Broadcast the message to all clients
-    io.sockets.emit('new message' , '<b>' + message.nickname + '</b>:&nbsp&nbsp' + message.content);
+    io.sockets.emit('new message' , message);
 }
 
 function updateConnectedUsers(){
