@@ -40,7 +40,7 @@ function clientConnected(socket){
         // Remove the user that disconnected, if it was 'logged in'
         if (socket.nickname != ''){
             // Notify the other Users
-            io.sockets.emit('system message' , 'User <b>' + socket.nickname + '</b> has left the chatroom.');
+            io.sockets.emit('system message' , 'User <b>' + socket.nickname + '</b> has left the chat-room.');
 
             connectedUsers.splice(connectedUsers.indexOf(socket),1);
             updateConnectedUsers();

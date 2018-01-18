@@ -29,17 +29,14 @@
         <div id = "chatroomHeader">
             <!-- List of currently connect users -->
             <p id = "connectedUsers" class = "userList" ><b>Connected Users:</b></p>
-            <br />
             <form class="customForm" id="messageForm" >
-                <label><b>Send your message bellow: </b></label>
-                <br />
+                <label><b>Write your message bellow: </b></label> <br />
                 <textarea class="inputArea2" rows ="4" cols="50" id="message"></textarea>
                 <br />
-                <input type="submit" class="button" value="Send" />
             </form>
-            <br /><br />
+            <br />
         </div>
-        <br />
+        <br /><br />
 
         <!-- Chat -->
         <div id="chat"></div>
@@ -88,7 +85,7 @@
                     $chatroomArea.show();
 
                     // Display a 'welcoming' message
-                    $chat.append('<p class="systemMessage" >Welcome <b>' + socket.nickname + '</b>! To communicate with the other users, write your message in the <b>Text Area</b> and press <b>Send</b> to send it!</p>');
+                    $chat.append('<p class="systemMessage" >Welcome <b>' + socket.nickname + '</b>! To communicate with the other users, write your message in the <b>Text Area</b> and press \'<b>ENTER</b>\' to send it!</p>');
 
                     // Notify the server that the new user chose a nickname
                     socket.emit('new client nickname' , socket.nickname);

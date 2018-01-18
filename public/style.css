@@ -39,7 +39,7 @@
     background-color: #80b3ff;
     border: 2px solid #002966;
     border-radius: 5px;
-    width: 52%;
+    width: 55%;
 }
 
 .chatMessage:hover {
@@ -55,7 +55,7 @@
     background-color: #e6e6e6;
     border: 1px dashed #b3b3b3;
     border-radius: 5px;
-    width: 52%;
+    width: 55%;
 }
 
 .systemMessage:hover {
@@ -64,7 +64,7 @@
 }
 
 .userList {
-    font-size: 15px;
+    font-size: 16px;
     padding-left: 15px;
     padding-bottom: 15px;
     background-color: #b3d1ff;
