@@ -26,6 +26,7 @@
 
     <!-- User Message Area -->
     <div id = "chatroomArea">
+        <br />
         <div id = "chatroomHeader">
             <!-- List of currently connect users -->
             <p id = "connectedUsers" class = "userList" ><b>Connected Users:</b></p>
@@ -36,11 +37,12 @@
             </form>
             <br />
         </div>
-        <br /><br />
+        <br /><br /><br />
 
         <!-- Chat -->
         <div id="chat"></div>
     </div>
+
 
     <!-- This script forces textarea content to be sent after 'enter' is pressed -->
     <script type = "text/javascript">
@@ -85,7 +87,7 @@
                     $chatroomArea.show();
 
                     // Display a 'welcoming' message
-                    $chat.append('<p class="systemMessage" >Welcome <b>' + socket.nickname + '</b>! To communicate with the other users, write your message in the <b>Text Area</b> and press \'<b>ENTER</b>\' to send it!</p>');
+                    $chat.append('<p class="systemMessage" ><i>Welcome <b>' + socket.nickname + '</b>! To communicate with the other users, write your message in the <b>Text Area</b> and press \'<b>ENTER</b>\' to send it!</i></p>');
 
                     // Notify the server that the new user chose a nickname
                     socket.emit('new client nickname' , socket.nickname);
@@ -109,6 +111,9 @@
             // When receiving a message from the server, append it to the chat div
             socket.on('new message' , function(data){
                 $chat.append('<p class="chatMessage" >' + data + '</p>');
+
+                // Auto scroll to the bottom of the div
+                $("#chat").prop({ scrollTop: $("#chat").prop("scrollHeight") });
             });
 
             // Update current users
@@ -125,7 +130,7 @@
 
             // System message ; display it
             socket.on('system message' , function(message){
-                $chat.append('<p class="systemMessage" >' + message + '</p>');
+                $chat.append('<p class="systemMessage" ><i>' + message + '</i></p>');
             });
         });
     </script>
