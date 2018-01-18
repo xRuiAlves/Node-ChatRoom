@@ -21,9 +21,15 @@ $(function(){
         // Prevent page from refreshing
         e.preventDefault();
 
-        if ($nickname.val() != ''){
+        var nn = $nickname.val();
+        
+        // Special characters that are not accepted
+        var forbiddenCharacters = /[<>!|/\\\[\]{}()='?,.;.*+ºª^~´`]/;
+
+        // Only accept the nickname if it isn't 'empty' and if it doesn't have certain special characters
+        if ( (nn != '') && !forbiddenCharacters.test(nn) ){
             // Associate the nickname to the socket
-            socket.nickname = $nickname.val();
+            socket.nickname = nn;
 
             // Hide the login area and display the chatroom itself
             $loginArea.hide();
@@ -34,6 +40,10 @@ $(function(){
 
             // Notify the server that the new user chose a nickname
             socket.emit('new client nickname' , socket.nickname);
+        }
+        else{
+            // Clear the input area
+            $nickname.val('');
         }
     });
 
