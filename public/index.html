@@ -26,22 +26,34 @@
 
     <!-- User Message Area -->
     <div id = "chatroomArea">
-        <!-- List of currently connect users -->
-        <p id = "connectedUsers" class = "userList" ><b>Connected Users:</b></p>
-
-        <form class="customForm" id="messageForm">
-            <label>Send your message bellow: </label>
+        <div id = "chatroomHeader">
+            <!-- List of currently connect users -->
+            <p id = "connectedUsers" class = "userList" ><b>Connected Users:</b></p>
             <br />
-            <textarea class="inputArea2" rows ="4" cols="50" id="message"></textarea>
-            <br />
-            <input type="submit" class="button" value="Send" />
-        </form>
-        <br /> <br />
+            <form class="customForm" id="messageForm" >
+                <label><b>Send your message bellow: </b></label>
+                <br />
+                <textarea class="inputArea2" rows ="4" cols="50" id="message"></textarea>
+                <br />
+                <input type="submit" class="button" value="Send" />
+            </form>
+            <br /><br />
+        </div>
+        <br />
 
         <!-- Chat -->
         <div id="chat"></div>
     </div>
 
+    <!-- This script forces textarea content to be sent after 'enter' is pressed -->
+    <script type = "text/javascript">
+        $("#message").keypress(function (e) {
+            if(e.which == 13 && !e.shiftKey) {
+                $(this).closest("form").submit();
+                e.preventDefault();
+            }
+        });
+    </script>
 
     <script>
         $(function(){
@@ -74,6 +86,9 @@
                     // Hide the login area and display the chatroom itself
                     $loginArea.hide();
                     $chatroomArea.show();
+
+                    // Display a 'welcoming' message
+                    $chat.append('<p class="systemMessage" >Welcome <b>' + socket.nickname + '</b>! To communicate with the other users, write your message in the <b>Text Area</b> and press <b>Send</b> to send it!</p>');
 
                     // Notify the server that the new user chose a nickname
                     socket.emit('new client nickname' , socket.nickname);
@@ -109,6 +124,11 @@
                     nicknamesList += "&nbsp&nbsp&nbsp&nbsp&nbsp<i>" + nicknames[i] + "</i>";
                 }
                 $connectedUsers.html(nicknamesList);
+            });
+
+            // System message ; display it
+            socket.on('system message' , function(message){
+                $chat.append('<p class="systemMessage" >' + message + '</p>');
             });
         });
     </script>

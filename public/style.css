@@ -33,11 +33,13 @@
 
 .chatMessage {
     font-size: 16px;
-    padding: 10px 20px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    padding-left: 20px;
     background-color: #80b3ff;
     border: 2px solid #002966;
     border-radius: 5px;
-    width: 45%;
+    width: 52%;
 }
 
 .chatMessage:hover {
@@ -45,13 +47,42 @@
     border: 2px solid #3939ac;
 }
 
+.systemMessage {
+    font-size: 16px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    background-color: #e6e6e6;
+    border: 1px dashed #b3b3b3;
+    border-radius: 5px;
+    width: 52%;
+}
+
+.systemMessage:hover {
+    background-color: #f2f2f2;
+    border: 1px dashed #b3b3b3;
+}
+
 .userList {
     font-size: 15px;
-    padding: 10px 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
     background-color: #b3d1ff;
-    border-bottom: 2px solid #99c2ff;
-    border-right: 2px solid #99c2ff;
+    border-bottom: 2px solid #80b3ff;
+}
+
+.customForm {
+    padding-left: 15px;
+}
+
+#chatroomHeader {
     border-radius: 5px;
+    border: 2px solid #80b3ff;
+    background-color: #b3d1ff;
+}
+
+hr {
+    border: 1px solid #002966;
 }
 
 p {

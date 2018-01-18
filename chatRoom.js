@@ -39,6 +39,9 @@ function clientConnected(socket){
     socket.on('disconnect' , function (){
         // Remove the user that disconnected, if it was 'logged in'
         if (socket.nickname != ''){
+            // Notify the other Users
+            io.sockets.emit('system message' , 'User <b>' + socket.nickname + '</b> has left the chatroom.');
+
             connectedUsers.splice(connectedUsers.indexOf(socket),1);
             updateConnectedUsers();
         }
@@ -56,7 +59,7 @@ function clientConnected(socket){
 }
 
 function sendMessage(message){
-    io.sockets.emit('new message' , '<b>' + message.nickname + '</b>: ' + message.content);
+    io.sockets.emit('new message' , '<b>' + message.nickname + '</b>:&nbsp&nbsp' + message.content);
 }
 
 function updateConnectedUsers(){
