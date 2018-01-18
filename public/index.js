@@ -16,13 +16,16 @@ $(function(){
 
     $chatroomArea.hide();   // Chatroom is not visible before choosing a nickname
 
+    var beep = new Audio('beep.mp3');
+    beep.volume = 0.03;
+
     // Send the user's nickname to the server
     $loginForm.submit(function(e){
         // Prevent page from refreshing
         e.preventDefault();
 
         var nn = $nickname.val();
-        
+
         // Special characters that are not accepted
         var forbiddenCharacters = /[<>!|/\\\[\]{}()='?,.;.*+ºª^~´`]/;
 
@@ -63,6 +66,8 @@ $(function(){
 
     // When receiving a message from the server, append it to the chat div
     socket.on('new message' , function(usermessage){
+        beep.play();    // Play a beep
+
         var $msg = $('<p class="chatMessage">');
         var $msgNickname = $('<b>');
         var $msgContent = $('<text>');
@@ -91,6 +96,8 @@ $(function(){
 
     // System message ; display it
     socket.on('system message' , function(message){
+        beep.play(); // Play a beep
+
         $chat.append('<p class="systemMessage" ><i>' + message + '</i></p>');
 
         // Auto scroll to the bottom of the chat

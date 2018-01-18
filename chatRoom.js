@@ -29,9 +29,12 @@ io.sockets.on('connection' , clientConnected);
 function clientConnected(socket){
     // New connected user
     socket.nickname = '';   // Not 'logged in' yet , not nickname associated
+    console.log('Client  ' + socket.id + '  connected.');
 
     // Client disconnected
     socket.on('disconnect' , function (){
+        console.log('Client  ' + socket.id + '  disconnected.');
+
         // Remove the user that disconnected, if it was 'logged in'
         if (socket.nickname != ''){
             // Notify the other Users
