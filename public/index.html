@@ -120,7 +120,7 @@
 
                 $chat.append($msg);
 
-                // Auto scroll to the bottom of the div
+                // Auto scroll to the bottom of the chat
                 $("#chat").prop({ scrollTop: $("#chat").prop("scrollHeight") });
             });
 
@@ -139,6 +139,9 @@
             // System message ; display it
             socket.on('system message' , function(message){
                 $chat.append('<p class="systemMessage" ><i>' + message + '</i></p>');
+
+                // Auto scroll to the bottom of the chat
+                $("#chat").prop({ scrollTop: $("#chat").prop("scrollHeight") });
             });
         });
     </script>
