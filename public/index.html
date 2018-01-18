@@ -27,7 +27,7 @@
     <!-- User Message Area -->
     <div id = "chatroomArea">
         <!-- List of currently connect users -->
-        <p id = "connectedUsers" ><b>Connected Users:</b></p>
+        <p id = "connectedUsers" class = "userList" ><b>Connected Users:</b></p>
 
         <form class="customForm" id="messageForm">
             <label>Send your message bellow: </label>
@@ -85,11 +85,13 @@
                 // Prevent page from refreshing
                 e.preventDefault();
 
-                // Send message to the server
-                socket.emit('send message' , {content:$message.val() , nickname:socket.nickname});
+                if ($message.val() != ''){
+                    // Send message to the server
+                    socket.emit('send message' , {content:$message.val() , nickname:socket.nickname});
 
-                // Clear the text textarea
-                $message.val('');
+                    // Clear the text textarea
+                    $message.val('');
+                }
             });
 
             // When receiving a message from the server, append it to the chat div
@@ -102,9 +104,9 @@
                 var nicknamesList = '<b>Connected Users:</b>';
                 for (i=0 ; i<nicknames.length ; i++){
                     if( i != 0 ){
-                        nicknamesList += "&nbsp&nbsp&nbsp,"
+                        nicknamesList += "&nbsp&nbsp&nbsp&nbsp&nbsp,";
                     }
-                    nicknamesList += "&nbsp&nbsp&nbsp" + nicknames[i];
+                    nicknamesList += "&nbsp&nbsp&nbsp&nbsp&nbsp<i>" + nicknames[i] + "</i>";
                 }
                 $connectedUsers.html(nicknamesList);
             });

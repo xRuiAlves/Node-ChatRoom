@@ -6,36 +6,51 @@
     padding: 6px 20px;
     font-size: 14px;
     color: black;
-    background-color: #a6a6a6;
-    border: 2px solid #333333;
+    background-color: #3385ff;
+    border: 2px solid #002966;
     border-radius: 3px;
 }
 
 .button:hover {
-    background-color: #d9d9d9;
-    border: 2px solid #8c8c8c;
+    background-color: #b3d1ff;
+    border: 2px solid #0047b3;
 }
 
 .inputArea1 {
     padding: 5px 10px;
-    border: 2px solid #333333;
-    background-color: #d9d9d9;
+    background-color: #80b3ff;
+    border: 2px solid #002966;
     font-size: 16px;
 }
 
 .inputArea2 {
     border-radius: 3px;
-    border: 2px solid #333333;
-    background-color: #d9d9d9;
+    background-color: #80b3ff;
+    border: 2px solid #002966;
     resize: none;
     font-size: 16px;
 }
 
 .chatMessage {
     font-size: 16px;
+    padding: 10px 20px;
+    background-color: #80b3ff;
+    border: 2px solid #002966;
+    border-radius: 5px;
+    width: 45%;
+}
+
+.chatMessage:hover {
+    background-color: #9f9fdf;
+    border: 2px solid #3939ac;
+}
+
+.userList {
+    font-size: 15px;
     padding: 10px 15px;
-    border: 2px solid #333333;
-    background-color: #d9d9d9;
+    background-color: #b3d1ff;
+    border-bottom: 2px solid #99c2ff;
+    border-right: 2px solid #99c2ff;
     border-radius: 5px;
 }
 
@@ -48,5 +63,5 @@ label {
 }
 
 body {
-    background-color: white;
+    background-color: #cce0ff;
 }
