@@ -20,17 +20,11 @@ console.log('Server started.');
 ////////////////////////
 //  Declare all events
 
-app.get('/' , application);
 io.sockets.on('connection' , clientConnected);
 
 
 //////////////////
 // Event Handlers
-
-function application(request , response){
-    // Send the index.html file to the client
-    response.sendFile(__dirname + '/public/index.html');
-}
 
 function clientConnected(socket){
     // New connected user
