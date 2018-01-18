@@ -1,5 +1,6 @@
 # Node-ChatRoom
 The goal of this project is to create a collaborative online chat room for multiple users, by learning new technologies like <b>node.js</b> (using packages like <b>socket.io</b> for managing websockets and <b>express</b> for deploying the server) and basic <b>HTML</b> and <b>javascript</b> (using <b>jQuery</b> library) for the client side.
+<br/>I'm currently using my <b>Raspberry Pi 3</b> to deploy and host the chat-room, and using it in my local area network to communicate with other people around the house. It works pretty well!
 <br/>
 <br/>
 
