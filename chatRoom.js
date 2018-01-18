@@ -29,7 +29,7 @@ io.sockets.on('connection' , clientConnected);
 function clientConnected(socket){
     // New connected user
     socket.nickname = '';   // Not 'logged in' yet , not nickname associated
-    console.log('Client  ' + socket.id + '  connected.');
+    console.log('Client  ' + socket.handshake.address + '  connected.');
 
     // Client disconnected
     socket.on('disconnect' , function (){
