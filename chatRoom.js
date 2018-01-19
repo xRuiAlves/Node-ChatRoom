@@ -33,7 +33,7 @@ function clientConnected(socket){
 
     // Client disconnected
     socket.on('disconnect' , function (){
-        console.log('Client  ' + socket.id + '  disconnected.');
+        console.log('Client  ' + socket.handshake.address + '  disconnected.');
 
         // Remove the user that disconnected, if it was 'logged in'
         if (socket.nickname != ''){
