@@ -4,7 +4,7 @@ The goal of this project is to create a collaborative online chat room for multi
 <br/>
 <br/>
 
-## How to deply the server
+## How to deploy the server
 For deploying the server, you will need to install both <b>node.js</b> and <b>npm</b> (node package manager). You can do this very easly by opening a linux terminal and using apt-get:
 ```
 sudo apt-get install nodejs
