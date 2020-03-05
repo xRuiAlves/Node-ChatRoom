@@ -30,3 +30,4 @@ Here are the used APIs documentation which I followed for this project:
 
 ## Disclaimer
 This is my first time doing anything that looks like web development, so I hold no responsabilities for bad usage or bad practises learnt by reading the code in this repository. That being said, you are 100% free to use it for whatever you need, and I encourage you to learn node.js as it is a growing technology, easy to learn and very powerful.
+[![Run on Repl.it](https://repl.it/badge/github/xRuiAlves/Node-ChatRoom)](https://repl.it/github/xRuiAlves/Node-ChatRoom)
